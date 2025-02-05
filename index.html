@@ -432,59 +432,118 @@
             z-index: 2;
         }
 
-        .container {
-            max-width: 1100px;
+        .contact-container {
+            max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 2rem;
-        }
-        .contact-section {
-            background: #F7FAFC;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .contact-section h2 {
-            color: #ED1C24;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .contact-info {
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        .contact-info i {
-            color: #ED1C24;
-            margin-right: 8px;
-        }
-        .contact-form {
-            margin-top: 1.5rem;
-        }
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .contact-form button {
-            background: #ED1C24;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .contact-form button:hover {
-            background: #C4161D;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #2D3748;
-            color: white;
-            margin-top: 2rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .contact-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-details {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .contact-cta {
+            background: white;
+            color: #ED1C24;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-cta:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #2D3748;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FECE12;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #FECE12;
+        }
+
+        .footer-bottom {
+            background: #1A202C;
+            padding: 1rem;
+            text-align: center;
+            color: #A0AEC0;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
         /* Responsive Design */
         @media (max-width: 1024px) {
             .hero-container {
@@ -965,26 +1024,41 @@
         </div>
     </div>
 </section>
-<div class="container">
-    <section class="contact-section">
-        <h2>Get in Touch</h2>
-        <p class="contact-info">
-            <i class="fas fa-map-marker-alt"></i> 123 Business Street, Accra, Ghana <br>
-            <i class="fas fa-phone"></i> +233 123 456 789 <br>
-            <i class="fas fa-envelope"></i> contact@bvmdigital.com
-        </p>
-        <form class="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-</div>
-<footer>
-    &copy; 2025 BVM Digital. All Rights Reserved.
-</footer>
+<!-- Contact Section -->
+<section class="contact-container" id="contact">
+    <div class="contact-content">
+        <div class="contact-text">
+            <h2>Get in Touch</h2>
+        </div>
+        <div class="contact-details">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+233 123 456 789</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>contact@bvmdigital.com</span>
+            </div>
+            <a href="#" class="contact-cta">Chat with Support</a>
+        </div>
+    </div>
+</section>
 
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">BVM Digital</div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 BVM Digital. All Rights Reserved.
+    </div>
+</footer>
     <script>
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', () => {

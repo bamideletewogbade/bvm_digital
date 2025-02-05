@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About BVM Digital - Our mission, values, and expertise in empowering SMEs through digital solutions">
+    <title>About Us | BVM Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary-color: #ED1C24;
+            --secondary-color: #FECE12;
+            --text-color: #2D3748;
+            --light-bg: #F7FAFC;
+            --white: #FFFFFF;
+            --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+       /* Header & Navigation */
+       header {
+            background: rgba(37, 25, 25, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lets-talk-btn {
+            background: var(--secondary-color);
+            color: var(--text-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .lets-talk-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+        }
+        /* About Hero Section */
+        .about-hero {
+            background: var(--gradient);
+            padding: 8rem 0 4rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            padding: 1rem;
+            position: relative;
+            width: 50%;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 3rem;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-year {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .impact-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Industries Section */
+        .industries-section {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .industry-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .industry-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    BVM Digital
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="about.html">About Us</a>
+                    <a href="bvm_academy.html">BVM Academy</a>
+                </div>
+            </div>
+            <a href="#contact" class="lets-talk-btn">Let's Talk</a>
+            <i class="menu-toggle fas fa-bars"></i>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1 data-aos="fade-up">Empowering SMEs Digital Growth</h1>
+            <p data-aos="fade-up" data-aos-delay="200">We are a pioneering Digital Marketing Technology company committed to empowering Small and Medium-sized Enterprises (SMEs) with comprehensive and cutting-edge digital marketing services.</p>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="text-center mb-5">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2019</div>
+                        <h3>The Break of a New Dawn</h3>
+                        <p>BVM Digital started operations as Optikos Studios taking on the SME challenge one company at a time</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2021</div>
+                        <h3>Evolution to Blue Vision Multimedia</h3>
+                        <p>Optikos Studios rebranded to accommodate a multimedia of services that includes photography & videography</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h3>Full Technology Deployment</h3>
+                        <p>Now, BVM Digital - the brand took on a full technology approach deploying Custom tech solution and AI products</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h3>BVM Digital – An SME Full Suite Business</h3>
+                        <p>BVM Digital is empowering SMEs with proven marketing and Technology solutions to ensure their growth and sustainability</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="container text-center mb-5">
+            <h2>Our Impact</h2>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card" data-aos="fade-up">
+                <div class="impact-number">1.5k+</div>
+                <h3>Social Media Posts</h3>
+            </div>
+            <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="impact-number">500k+</div>
+                <h3>Organic Reach</h3>
+            </div>
+            <div class="impact-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="impact-number">50+</div>
+                <h3>Websites Developed</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="industries-section">
+        <div class="container text-center mb-5">
+            <h2>Industries We Serve</h2>
+        </div>
+        <div class="industries-grid">
+            <div class="industry-item" data-aos="fade-up">Education</div>
+            <div class="industry-item" data-aos="fade-up" data-aos-delay="100">FMCG</div>
+            <div class="industry-item" data-aos="fade-up" data-aos-delay="200">Energy</div>
+            <div class="industry-item" data-aos="fade-up" data-aos-delay="300">Finance</div>
+            <div class="industry-item" data-aos="fade-up" data-aos-delay="400">Hospitality</div>
+            <div class="industry-item" data-aos="fade-up" data-aos-delay="500">Food</div>
+            <div class="industry-item" data-aos="fade-up" data-aos-delay="600">Travel & Tour</div>
+            <div class="industry-item" data-aos="fade-up" data-aos-delay="700">Commerce</div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>

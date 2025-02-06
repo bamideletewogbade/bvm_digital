@@ -6,106 +6,486 @@
     <meta name="description" content="Explore the services offered by BVM Digital to enhance your digital presence and grow your business.">
     <title>Our Services | BVM Digital</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKzYjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #2D3748;
+        :root {
+            --primary-color: #ED1C24;
+            --secondary-color: #FECE12;
+            --text-color: #2D3748;
+            --light-bg: #F7FAFC;
+            --white: #FFFFFF;
+            --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
         }
+
+        body {
+            background: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
         header {
-            background: #ED1C24;
-            color: white;
+            background: rgba(37, 25, 25, 0.95);
             padding: 1rem 0;
-            text-align: center;
-            font-size: 1.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lets-talk-btn {
+            background: var(--gradient);
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .lets-talk-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+        }
+
+        .hero-header {
+            background: var(--gradient);
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: -4rem auto 4rem;
             padding: 0 2rem;
         }
-        .services-section {
-            background: #F7FAFC;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
         }
-        .services-section h2 {
-            color: #ED1C24;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        .service-item {
+
+        .service-card {
             background: white;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .service-item i {
-            font-size: 2rem;
-            color: #ED1C24;
-            margin-bottom: 0.5rem;
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
-        .cta {
-            text-align: center;
-            margin-top: 2rem;
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
         }
-        .cta a {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: #ED1C24;
+
+        .service-icon i {
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
+            font-size: 1.8rem;
         }
-        footer {
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-section {
+            background: white;
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+
+        .process-step {
             text-align: center;
-            padding: 1rem;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            background: var(--gradient);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 15px;
+            margin: 4rem 0;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        footer {
             background: #2D3748;
             color: white;
-            margin-top: 2rem;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FECE12;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #FECE12;
+        }
+
+        .footer-bottom {
+            background: #1A202C;
+            padding: 1rem;
+            text-align: center;
+            color: #A0AEC0;
+        }
+
+        @media (max-width: 768px) {
+            .services-container {
+                margin: -2rem auto 2rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .lets-talk-btn {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
     <header>
-        Our Services
+        <nav>
+            <div class="nav-container">
+                <a href="#" class="logo">
+                    <i class="fas fa-chart-line"></i>
+                    BVM Digital
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="bvm_academy.html">BVM Academy</a>
+                </div>
+            </div>
+            <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
+            <i class="menu-toggle fas fa-bars"></i>
+        </nav>
     </header>
-    <div class="container">
-        <section class="services-section">
-            <h2>What We Offer</h2>
-            <div class="service-item">
-                <i class="fas fa-chart-line"></i>
-                <h3>Digital Marketing</h3>
-                <p>Boost your brand visibility and reach your target audience with strategic online marketing solutions.</p>
+
+    <!-- Hero Section -->
+    <section class="hero-header">
+        <h1>Transform Your Business</h1>
+        <p>Comprehensive digital solutions for sustainable growth</p>
+    </section>
+
+    <!-- Services Section -->
+    <div class="services-container">
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Digital Marketing Strategy</h3>
+                <p>Data-driven campaigns that maximize ROI through targeted audience engagement and conversion optimization.</p>
+                <!-- <a href="#" class="text-primary">Learn More →</a> -->
             </div>
-            <div class="service-item">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Branding & Design</h3>
-                <p>Create a strong brand identity with our expert logo design, visuals, and branding strategies.</p>
-            </div>
-            <div class="service-item">
-                <i class="fas fa-laptop-code"></i>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
                 <h3>Web Development</h3>
-                <p>Get a stunning, responsive, and user-friendly website tailored to your business needs.</p>
+                <p>Custom-built responsive websites with cutting-edge technology and seamless user experiences.</p>
+                <!-- <a href="#" class="text-primary">Learn More →</a> -->
             </div>
-            <div class="service-item">
-                <i class="fas fa-search"></i>
-                <h3>SEO Optimization</h3>
-                <p>Improve your search engine rankings and attract more organic traffic to your website.</p>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Data Analytics</h3>
+                <p>Actionable insights through advanced analytics and business intelligence solutions.</p>
+                <!-- <a href="#" class="text-primary">Learn More →</a> -->
             </div>
-            <div class="cta">
-                <a href="contact.html">Get Started</a>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Solutions</h3>
+                <p>Smart automation and machine learning solutions to optimize your business processes.</p>
+                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>E-Commerce Solutions</h3>
+                <p>Complete online store development with secure payment integration and inventory management.</p>
+                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Social Media Management</h3>
+                <p>Strategic content creation and community management across all major platforms.</p>
+                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+            </div>
+        </div>
+
+        <section class="process-section">
+            <h2 class="text-center mb-5">Our Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h4>Discovery & Strategy</h4>
+                    <p>In-depth analysis and custom strategy development</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h4>Design & Development</h4>
+                    <p>Creative solutions and technical implementation</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h4>Launch & Optimize</h4>
+                    <p>Strategic deployment and continuous improvement</p>
+                </div>
             </div>
         </section>
+
+        <section class="cta-section">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's create something amazing together</p>
+            <a href="contact.html" class="cta-button">
+                Start Your Journey
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
     </div>
+
+    <!-- Footer -->
     <footer>
-        &copy; 2025 BVM Digital. All Rights Reserved.
+        <div class="footer-content">
+            <div class="footer-logo">BVM Digital</div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BVM Digital. All Rights Reserved.
+        </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

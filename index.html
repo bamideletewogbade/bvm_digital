@@ -355,7 +355,7 @@
 
         /* Services Section */
         .services {
-            padding: 6rem 0;
+            padding: 4rem 0;
             background: var(--white);
         }
 
@@ -620,7 +620,7 @@
         /* About Section Enhancements */
 .about {
     background: var(--light-bg);
-    padding: 6rem 0;
+    padding: 2rem 0;
     position: relative;
     overflow: hidden;
 }
@@ -781,7 +781,7 @@
 /* Testimonials Section */
 .testimonials {
     background: var(--light-bg);
-    padding: 6rem 0;
+    padding: 2rem 0;
     position: relative;
     overflow: hidden;
 }
@@ -853,6 +853,60 @@
         padding: 1.5rem;
     }
 }
+/* Client Showcase Section */
+.clients {
+    background: var(--white);
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.clients-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.client-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: var(--light-bg);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.client-logo img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.client-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.client-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .clients-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -865,12 +919,12 @@
                 </a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
-                    <a href="services.html">Services</a>
                     <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
                     <a href="bvm_academy.html">BVM Academy</a>
                 </div>
             </div>
-            <a href="#contact" class="lets-talk-btn">Let's Talk</a>
+            <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
             <i class="menu-toggle fas fa-bars"></i>
         </nav>
     </header>
@@ -1024,6 +1078,33 @@
         </div>
     </div>
 </section>
+<!-- Client Showcase Section -->
+<section class="clients" id="clients">
+    <div class="section-title">
+        <h2>Our Valued Clients</h2>
+        <p>We are proud to have partnered with these amazing businesses</p>
+    </div>
+    <div class="clients-grid">
+        <div class="client-logo">
+            <img src="images/client1.png" alt="Client 1">
+        </div>
+        <div class="client-logo">
+            <img src="images/client2.png" alt="Client 2">
+        </div>
+        <div class="client-logo">
+            <img src="images/client3.png" alt="Client 3">
+        </div>
+        <div class="client-logo">
+            <img src="images/client4.png" alt="Client 4">
+        </div>
+        <div class="client-logo">
+            <img src="images/client5.png" alt="Client 5">
+        </div>
+        <div class="client-logo">
+            <img src="images/client6.png" alt="Client 6">
+        </div>
+    </div>
+</section>
 <!-- Contact Section -->
 <section class="contact-container" id="contact">
     <div class="contact-content">
@@ -1076,5 +1157,18 @@
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+              window.voiceflow.chat.load({
+                verify: { projectID: '64b70cb0d0793700072aa16e' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production'
+              });
+            }
+            v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+      </script>
 </body>
 </html>

@@ -784,6 +784,7 @@
     padding: 2rem 0;
     position: relative;
     overflow: hidden;
+    margin-bottom: 4rem;
 }
 
 .testimonials-container {
@@ -854,7 +855,7 @@
     }
 }
 /* Client Showcase Section */
-.clients {
+/* .clients {
     background: var(--white);
     padding: 2rem 0;
     position: relative;
@@ -898,14 +899,72 @@
 .client-logo:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+} */
+.clients-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.client-logo img {
+    max-width: 100%; /* Adjust percentage as needed */
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.7);
+    transition: all 0.3s ease;
+}
+
+.client-logo img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.02);
+}
+
+.client-section-title {
+            text-align: center;
+            margin-bottom: 0rem;
+        }
+
+        .client-section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 0rem;
+        }
+        .clients {
+    background: var(--white);
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: 4rem;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .clients-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 1rem;
     }
+}
+.logo img {
+    max-height: 50px;
+    width: auto;
+    -webkit-font-smoothing: antialiased;
+    image-rendering: -webkit-optimize-contrast;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    
+}
+.logo {
+    padding: 0.5rem;
+    /* border: 0.1px solid transparent; */
+    border-image: var(--gradient) 1;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.logo:hover img {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); /* Enhance shadow on hover */
 }
     </style>
 </head>
@@ -914,13 +973,13 @@
         <nav>
             <div class="nav-container">
                 <a href="#" class="logo">
-                    <i class="fas fa-chart-line"></i>
-                    BVM Digital
+                    <b><img src="images/f.png" alt="BVM Digital"></b>
                 </a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="services.html">Services</a>
+                    <a href="solutions.html">Our Solutions</a>
                     <a href="bvm_academy.html">BVM Academy</a>
                 </div>
             </div>
@@ -928,7 +987,6 @@
             <i class="menu-toggle fas fa-bars"></i>
         </nav>
     </header>
-
     <!-- <section class="hero" id="home">
         <div class="hero-content">
             <h1>Transform Your Digital Presence</h1>
@@ -945,7 +1003,7 @@
             <a href="contact.html" class="cta-button">Start Your Digital Journey</a>
         </div>
         <div class="hero-image">
-            <img src="images/c.jpg" alt="Hero Image">
+            <img src="images/try.jpg" alt="Hero Image">
         </div>
     </div>
     <!-- Floating Shapes for Background -->
@@ -1080,11 +1138,11 @@
 </section>
 <!-- Client Showcase Section -->
 <section class="clients" id="clients">
-    <div class="section-title">
+    <div class="client-section-title">
         <h2>Our Valued Clients</h2>
         <p>We are proud to have partnered with these amazing businesses</p>
     </div>
-    <div class="clients-grid">
+    <!-- <div class="clients-grid">
         <div class="client-logo">
             <img src="images/client1.png" alt="Client 1">
         </div>
@@ -1102,6 +1160,11 @@
         </div>
         <div class="client-logo">
             <img src="images/client6.png" alt="Client 6">
+        </div> -->
+        <div class="clients-grid">
+            <div class="client-logo">
+                <img src="images/Clients.png" alt="Our Valued Clients">
+            </div>
         </div>
     </div>
 </section>

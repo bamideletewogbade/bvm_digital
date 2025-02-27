@@ -14,6 +14,7 @@
             --text-color: #2D3748;
             --light-bg: #F7FAFC;
             --white: #FFFFFF;
+            --black: #000000;
             --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
         }
 
@@ -32,7 +33,7 @@
 
         /* Header & Navigation */
         header {
-            background: rgba(37, 25, 25, 0.95);
+            background: var(--black);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -57,7 +58,7 @@
             gap: 3rem;
         }
 
-        .logo {
+        /* .logo {
             color: var(--white);
             font-size: 1.75rem;
             font-weight: 700;
@@ -69,7 +70,7 @@
 
         .logo i {
             color: var(--secondary-color);
-        }
+        } */
 
         .menu-toggle {
             display: none;
@@ -119,8 +120,26 @@
             box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
         }
 
+        .mobile-contact-btn {
+        display: none;  /* Hidden by default */
+        background: var(--gradient);
+        color: #FFFFFF;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+    }
+
         .hero-header {
-            background: var(--gradient);
+            background: var(--black);
             color: white;
             padding: 8rem 0 4rem;
             text-align: center;
@@ -140,7 +159,7 @@
             opacity: 0.3;
         }
 
-        .services-container {
+        /* .services-container {
             max-width: 1200px;
             margin: -4rem auto 4rem;
             padding: 0 2rem;
@@ -171,7 +190,7 @@
         .service-icon {
             width: 70px;
             height: 70px;
-            background: var(--gradient);
+            background: var(--black);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -194,6 +213,47 @@
             color: #666;
             margin-bottom: 1.5rem;
         }
+
+       
+.service-features span {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+
+.service-features i {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.service-link {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.service-link:hover::after {
+    left: 100%;
+} */
 
         .process-section {
             background: white;
@@ -229,7 +289,7 @@
         }
 
         .cta-section {
-            background: var(--gradient);
+            background: var(--black);
             color: white;
             padding: 4rem 0;
             text-align: center;
@@ -241,7 +301,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
-            background: white;
+            background: var(--gradient);
             color: var(--primary-color);
             padding: 1rem 2rem;
             border-radius: 50px;
@@ -257,7 +317,7 @@
         }
 
         footer {
-            background: #2D3748;
+            background: var(--black);
             color: white;
             padding: 2rem 0;
             text-align: center;
@@ -293,20 +353,30 @@
         }
 
         .footer-bottom {
-            background: #1A202C;
+            background: var(--black);
             padding: 1rem;
             text-align: center;
-            color: #A0AEC0;
+            color: var(--white);
         }
 
         @media (max-width: 768px) {
-            .services-container {
+            /* .services-container {
                 margin: -2rem auto 2rem;
             }
             
             .service-card {
                 padding: 1.5rem;
             }
+
+            .service-features {
+        grid-template-columns: 1fr;
+    }
+    
+    
+    .service-link {
+        width: 100%;
+        text-align: center;
+    } */
 
             .menu-toggle {
                 display: block;
@@ -321,7 +391,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--primary-color);
+                background: var(--black);
                 padding: 1rem;
                 flex-direction: column;
                 align-items: center;
@@ -336,6 +406,210 @@
                 display: none;
             }
         }
+        .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.10rem;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 40px; /* Fixed height for better control */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.logo-text {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    /* text-transform: uppercase; */
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .logo-text {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 35px;
+    }
+    .logo-text {
+        font-size: 1.1rem;
+    }
+
+    .mobile-contact-btn {
+            display: block;  /* Show in mobile menu */
+        }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        gap: 0.5rem;
+    }
+    .logo img {
+        height: 30px;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
+}
+.learn-more-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(237, 28, 36, 0.2);
+        }
+
+        /* Services Grid */
+.services-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+/* Service Cards */
+.service-card {
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    background: var(--light-bg);
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 0;
+    background: var(--gradient);
+    transition: height 0.4s ease;
+}
+
+.service-card:hover::before {
+    height: 100%;
+}
+
+/* Icon Wrapper */
+.service-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    color: var(--white);
+    background: var(--black);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+    background: var(--gradient);
+    transform: translateY(-5px) rotate(5deg);
+}
+
+/* Service Features */
+.service-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.service-features span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.service-features i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+/* Service Link Button */
+.service-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    background: var(--primary-color);
+    align-self: flex-start;
+}
+
+.service-link:hover {
+    background: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-card {
+        padding: 2rem;
+        min-height: auto;
+    }
+    
+    .service-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -343,15 +617,18 @@
     <header>
         <nav>
             <div class="nav-container">
-                <a href="#" class="logo">
-                    <i class="fas fa-chart-line"></i>
-                    BVM Digital
+                <a href="index.html" class="logo">
+                    <img src="images/f.png" alt="BVM Digital">
+                    <span class="logo-text">BVM Digital</span>
                 </a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="services.html">Services</a>
+                    <a href="solutions.html">Our Solutions</a>
+                    <a href="our_works.html">Our Works</a>
                     <a href="bvm_academy.html">BVM Academy</a>
+                    <a href="contact.html" class="mobile-contact-btn">Contact Us</a>
                 </div>
             </div>
             <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
@@ -365,16 +642,15 @@
         <p>Comprehensive digital solutions for sustainable growth</p>
     </section>
 
-    <!-- Services Section -->
-    <div class="services-container">
+    <!-- <div class="services-container">
         <div class="service-grid">
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-rocket"></i>
                 </div>
-                <h3>Digital Marketing Strategy</h3>
-                <p>Data-driven campaigns that maximize ROI through targeted audience engagement and conversion optimization.</p>
-                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+                <h3>Digital Strategy</h3>
+                <p>Data-driven campaigns that maximize ROI through targeted audience engagement.</p>
+                <a href="digital_marketing_service.html" class="learn-more-btn">Learn More →</a>
             </div>
 
             <div class="service-card">
@@ -383,7 +659,7 @@
                 </div>
                 <h3>Web Development</h3>
                 <p>Custom-built responsive websites with cutting-edge technology and seamless user experiences.</p>
-                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+                <a href="web_dev_service.html" class="learn-more-btn">Learn More →</a>
             </div>
 
             <div class="service-card">
@@ -392,7 +668,7 @@
                 </div>
                 <h3>Data Analytics</h3>
                 <p>Actionable insights through advanced analytics and business intelligence solutions.</p>
-                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+                <a href="data_analytics.html" class="learn-more-btn">Learn More →</a>
             </div>
 
             <div class="service-card">
@@ -401,16 +677,16 @@
                 </div>
                 <h3>AI Solutions</h3>
                 <p>Smart automation and machine learning solutions to optimize your business processes.</p>
-                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+                <a href="ai_solutions.html" class="learn-more-btn">Learn More →</a>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
-                <h3>E-Commerce Solutions</h3>
+                <h3>Custom Technology Solutions</h3>
                 <p>Complete online store development with secure payment integration and inventory management.</p>
-                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+                <a href="#" class="learn-more-btn">Learn More →</a>
             </div>
 
             <div class="service-card">
@@ -418,10 +694,76 @@
                     <i class="fas fa-users"></i>
                 </div>
                 <h3>Social Media Management</h3>
-                <p>Strategic content creation and community management across all major platforms.</p>
-                <!-- <a href="#" class="text-primary">Learn More →</a> -->
+                <p>Strategic content creation and community management.</p>
+                <a href="social_media_management.html" class="learn-more-btn">Learn More →</a>
             </div>
+        </div> -->
+
+       <!-- Services Section -->
+<section class="services" id="services">
+    <div class="section-title">
+        <h2 style="text-align: center; margin-top: 100px;">Our Services</h2>
+        <p style="text-align: center;">Comprehensive digital solutions tailored for your business success</p>
+    </div>
+    <div class="services-grid">
+        <!-- AI & Tech Solutions Card -->
+        <div class="service-card">
+            <div class="service-icon-wrapper">
+                <i class="service-icon fas fa-robot"></i>
+            </div>
+            <h3>AI & Tech Solutions</h3>
+            <p>Transformative technology solutions powered by artificial intelligence</p>
+            <div class="service-features">
+                <span><i class="fas fa-check"></i> AI Chatbots</span>
+                <span><i class="fas fa-check"></i> Custom AI Solutions</span>
+                <span><i class="fas fa-check"></i> Bespoke Tech Solutions</span>
+                <span><i class="fas fa-check"></i> AI Training</span>
+            </div>
+            <a href="ai_solutions.html" class="service-link">
+                Explore Solutions
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
+
+        <!-- Digital Marketing Services Card -->
+        <div class="service-card">
+            <div class="service-icon-wrapper">
+                <i class="service-icon fas fa-bullseye"></i>
+            </div>
+            <h3>Digital Marketing Services</h3>
+            <p>Data-driven strategies that amplify your digital presence</p>
+            <div class="service-features">
+                <span><i class="fas fa-check"></i> Digital Advertising</span>
+                <span><i class="fas fa-check"></i> SEO Optimization</span>
+                <span><i class="fas fa-check"></i> Social Media Management</span>
+                <span><i class="fas fa-check"></i> Marketing Training</span>
+            </div>
+            <a href="digital_marketing_service.html" class="service-link">
+                View Marketing Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Web Design & Development Card -->
+        <div class="service-card">
+            <div class="service-icon-wrapper">
+                <i class="service-icon fas fa-code"></i>
+            </div>
+            <h3>Web Design & Development</h3>
+            <p>Custom digital experiences that convert visitors to customers</p>
+            <div class="service-features">
+                <span><i class="fas fa-check"></i> Corporate Websites</span>
+                <span><i class="fas fa-check"></i> E-Commerce Solutions</span>
+                <span><i class="fas fa-check"></i> Web Development Training</span>
+                <span><i class="fas fa-check"></i> Ongoing Maintenance</span>
+            </div>
+            <a href="web_dev_service.html" class="service-link">
+                Discover Web Solutions
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
 
         <section class="process-section">
             <h2 class="text-center mb-5">Our Process</h2>

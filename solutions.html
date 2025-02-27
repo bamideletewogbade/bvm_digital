@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BVM Digital - Empowering SMEs with comprehensive digital marketing solutions and innovative technology services">
+    <title>Our Solutions | BVM Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        :root {
+            --primary-color: #ED1C24;
+            --secondary-color: #FECE12;
+            --text-color: #2D3748;
+            --light-bg: #F7FAFC;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--black);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        /* .logo {
+            color: var(--white);
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            max-height: 50px;
+            width: auto;
+            -webkit-font-smoothing: antialiased;
+            image-rendering: -webkit-optimize-contrast;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .logo:hover img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        } */
+
+        .mobile-contact-btn {
+        display: none;  /* Hidden by default */
+        background: var(--gradient);
+        color: #FFFFFF;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+    }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lets-talk-btn {
+            background: var(--gradient);
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .lets-talk-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            background: var(--black);
+            padding: 10rem 0 6rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Solutions Section */
+        .solutions {
+            background: var(--light-bg);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solutions-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .solution-card {
+            padding: 2.5rem;
+            border-radius: 15px;
+            background: var(--white);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .solution-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(45, 55, 72, 0.1);
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .solution-card p {
+            color: #666;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FECE12;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #FECE12;
+        }
+
+        .footer-bottom {
+            background: var(--black);
+            padding: 1rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .lets-talk-btn {
+                display: none;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-hero p {
+                font-size: 1rem;
+            }
+        }
+        .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.10rem;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 40px; /* Fixed height for better control */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.logo-text {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    /* text-transform: uppercase; */
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .logo-text {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 35px;
+    }
+    .logo-text {
+        font-size: 1.1rem;
+    }
+
+    .mobile-contact-btn {
+            display: block;  /* Show in mobile menu */
+        }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        gap: 0.5rem;
+    }
+    .logo img {
+        height: 30px;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/f.png" alt="BVM Digital">
+                    <span class="logo-text">BVM Digital</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="solutions.html">Our Solutions</a>
+                    <a href="our_works.html">Our Works</a>
+                    <a href="bvm_academy.html">BVM Academy</a>
+                    <a href="contact.html" class="mobile-contact-btn">Contact Us</a>
+                </div>
+            </div>
+            <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
+            <i class="menu-toggle fas fa-bars"></i>
+        </nav>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Innovative Solutions for Your Business</h1>
+            <p>Discover cutting-edge tools and technologies designed to empower your business and learning experience. From AI-powered assistants to personalized teaching tools, we provide solutions that drive growth and efficiency.</p>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions" id="solutions">
+        <!-- <div class="section-title">
+            <h2>Our Solutions</h2>
+            <p>Innovative tools designed to empower your business and learning experience</p>
+        </div> -->
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <i class="solution-icon fas fa-robot"></i>
+                <h3>Vsion</h3>
+                <p>A trained generative assistant specialized in tasks such as social media management and administrative support, designed to streamline your workflow.</p>
+            </div>
+            <div class="solution-card">
+                <i class="solution-icon fas fa-chalkboard-teacher"></i>
+                <h3>Tuta</h3>
+                <p>A personalized teaching assistant that helps students improve their knowledge and understanding of specific programs or courses.</p>
+            </div>
+            <div class="solution-card">
+                <i class="solution-icon fas fa-book-open"></i>
+                <h3>TutaX</h3>
+                <p>A program or course designer that helps individuals improve key skills or knowledge gaps. For example, TutaX can create a tailored plan to enhance your financial knowledge.</p>
+            </div>
+            <div class="solution-card">
+                <i class="solution-icon fas fa-shopping-cart"></i>
+                <h3>Yeloshop</h3>
+                <p>An innovative e-commerce solution designed to help SMEs establish and grow their online retail presence with seamless, user-friendly platform capabilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">BVM Digital</div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BVM Digital. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

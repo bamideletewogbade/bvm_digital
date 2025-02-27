@@ -16,6 +16,7 @@
             --text-color: #2D3748;
             --light-bg: #F7FAFC;
             --white: #FFFFFF;
+            --black: #000000;
             --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
         }
 
@@ -26,9 +27,9 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
-       /* Header & Navigation */
-       header {
-            background: rgba(37, 25, 25, 0.95);
+        /* Header & Navigation */
+        header {
+            background: var(--black);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -51,20 +52,6 @@
             display: flex;
             align-items: center;
             gap: 3rem;
-        }
-
-        .logo {
-            color: var(--white);
-            font-size: 1.75rem;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo i {
-            color: var(--secondary-color);
         }
 
         .menu-toggle {
@@ -114,9 +101,106 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
         }
+        
+        .mobile-contact-btn {
+        display: none;  /* Hidden by default */
+        background: var(--gradient);
+        color: #FFFFFF;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+    }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.10rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .nav-container {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .lets-talk-btn {
+                display: none;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                gap: 0.5rem;
+            }
+
+            .logo img {
+                height: 30px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+        }
+
         /* About Hero Section */
         .about-hero {
-            background: var(--gradient);
+            background: var(--black);
             padding: 8rem 0 4rem;
             color: var(--white);
             text-align: center;
@@ -257,6 +341,7 @@
             transform: translateY(-5px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+
         .contact-container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -311,7 +396,7 @@
         }
 
         footer {
-            background: #2D3748;
+            background: var(--black);
             color: white;
             padding: 2rem 0;
             text-align: center;
@@ -347,10 +432,10 @@
         }
 
         .footer-bottom {
-            background: #1A202C;
+            background: var(--black);
             padding: 1rem;
             text-align: center;
-            color: #A0AEC0;
+            color: var(--white);
         }
 
         @media (max-width: 1024px) {
@@ -370,7 +455,6 @@
             }
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .timeline::before {
                 left: 31px;
@@ -389,21 +473,102 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .team-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .team-card {
+            background: var(--light-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.05);
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            color: var(--text-color);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+            .mobile-contact-btn {
+            display: block;  /* Show in mobile menu */
+        }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-container">
-                <a href="#" class="logo">
-                    <i class="fas fa-chart-line"></i>
-                    BVM Digital
+                <a href="index.html" class="logo">
+                    <img src="images/f.png" alt="BVM Digital">
+                    <span class="logo-text">BVM Digital</span>
                 </a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="services.html">Services</a>
+                    <a href="solutions.html">Our Solutions</a>
+                    <a href="our_works.html">Our Works</a>
                     <a href="bvm_academy.html">BVM Academy</a>
+                    <a href="contact.html" class="mobile-contact-btn">Contact Us</a>
                 </div>
             </div>
             <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
@@ -473,7 +638,67 @@
             </div>
         </div>
     </section>
+    <!-- Add this section before the industries-section -->
+<section class="team-section">
+    <div class="container text-center mb-5">
+        <h2 data-aos="fade-up">Our Team</h2>
+    </div>
+    <div class="team-grid">
+        <div class="team-card" data-aos="fade-up">
+            <div class="team-image">
+                <img src="images/collins.jpg" alt="Collins Lartey">
+            </div>
+            <div class="team-info">
+                <h3 class="team-name">Collins Lartey</h3>
+                <div class="team-role">Lead Digital Partner</div>
+                <p class="team-bio">Leading our digital transformation initiatives with innovative strategies and solutions for SME growth and success.</p>
+            </div>
+        </div>
 
+        <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="team-image">
+                <img src="images/joel.jpg" alt="Joel Adonteng Peprah">
+            </div>
+            <div class="team-info">
+                <h3 class="team-name">Joel Adonteng Peprah</h3>
+                <div class="team-role">Commercial Director</div>
+                <p class="team-bio">Overseeing business development and client relationships to ensure sustainable growth and success.</p>
+            </div>
+        </div>
+
+        <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="team-image">
+                <img src="images/bams.png" alt="Bamidele Tewogbade">
+            </div>
+            <div class="team-info">
+                <h3 class="team-name">Bamidele Tewogbade</h3>
+                <div class="team-role">CTO</div>
+                <p class="team-bio">Driving technological excellence and innovation to deliver cutting-edge solutions for our clients.</p>
+            </div>
+        </div>
+
+        <div class="team-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="team-image">
+                <img src="images/James-Adogo-Ewoenam.jpg" alt="James Adogo Ewoenam">
+            </div>
+            <div class="team-info">
+                <h3 class="team-name">James Adogo Ewoenam</h3>
+                <div class="team-role">Full Stack Developer</div>
+                <p class="team-bio">Creating robust and scalable web solutions that drive digital transformation for our clients.</p>
+            </div>
+        </div>
+
+        <div class="team-card" data-aos="fade-up" data-aos-delay="800">
+            <div class="team-image">
+                <img src="images/images.png" alt="Emmanuel Ehorn">
+            </div>
+            <div class="team-info">
+                <h3 class="team-name">Emmanuel Ehorn</h3>
+                <div class="team-role">Chief Creative Designer</div>
+                <p class="team-bio">Spearheading visual excellence and brand identity through innovative design solutions that captivate and inspire our clients' audiences.</p>
+            </div>
+    </div>
+</section>
     <section class="industries-section">
         <div class="container text-center mb-5">
             <h2>Industries We Serve</h2>
@@ -504,12 +729,17 @@
         &copy; 2025 BVM Digital. All Rights Reserved.
     </div>
 </footer>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-    </script>
+<script>
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+
+    // Add this script for mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+</script>
 </body>
 </html>

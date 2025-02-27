@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BVM Academy - Prompt Engineering Course">
+    <title>Prompt Engineering | BVM Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+        :root {
+            --primary-color: #ED1C24;
+            --secondary-color: #FECE12;
+            --text-color: #2D3748;
+            --light-bg: #F7FAFC;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+            --transition: all 0.3s ease;
+            --border-radius: 15px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--light-bg);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--black);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lets-talk-btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .lets-talk-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+            color: var(--white);
+        }
+
+        .course-hero {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 10%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .course-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .course-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .course-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            flex: 1;
+        }
+
+        .course-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-card ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .curriculum {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 4rem;
+        }
+
+        .curriculum-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .curriculum-header::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--gradient);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideIn 0.5s forwards;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background: var(--white);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+            transform: translateX(100px);
+        }
+
+        .timeline-item.right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-week {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--gradient);
+            color: var(--white);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content h3 {
+            margin: 1rem 0;
+            color: var(--text-color);
+        }
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .topic-list li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .topic-list li::before {
+            content: '→';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .learning-outcome {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+
+        .learning-outcome strong {
+            color: var(--primary-color);
+        }
+
+        .week-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background: var(--light-bg);
+        }
+
+        .week-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .week-section ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .week-section ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .week-section ul li::before {
+            content: '→';
+            color: var(--primary-color);
+            position: absolute;
+            left: -1.5rem;
+        }
+
+        .enroll-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--black);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            margin-bottom: 4rem;
+        }
+
+        .enroll-btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: var(--white);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .enroll-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            background: var(--black);
+            padding: 1rem;
+            text-align: center;
+            color: var(--white);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .timeline-item.right::after {
+                left: 15px;
+            }
+
+            .course-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .menu-toggle {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .nav-container {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .lets-talk-btn {
+                display: none;
+            }
+
+            .course-content {
+                padding: 2rem 1rem;
+            }
+
+            .curriculum {
+                padding: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/f.png" alt="BVM Digital">
+                    <span class="logo-text">BVM Digital</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="solutions.html">Our Solutions</a>
+                    <a href="our_works.html">Our Works</a>
+                    <a href="bvm_academy.html">BVM Academy</a>
+                </div>
+            </div>
+            <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
+            <i class="menu-toggle fas fa-bars"></i>
+        </nav>
+    </header>
+
+    <!-- Course Hero Section -->
+    <section class="course-hero">
+        <h1>Prompt Engineering</h1>
+        <p>Master ChatGPT, Deepseek, Gemini & Claude</p>
+    </section>
+
+    <!-- Course Content -->
+    <div class="course-content">
+        <!-- Course Information -->
+        <div class="course-info">
+            <div class="info-card">
+                <h3><i class="fas fa-users"></i> Target Group</h3>
+                <ul>
+                    <li>University Students</li>
+                    <li>Graduates</li>
+                    <li>Professionals</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-clock"></i> Duration & Cost</h3>
+                <ul>
+                    <li>6 weeks</li>
+                    <li>GHS 1,500</li>
+                    <li>Only 10 seats available!</li>
+                </ul>
+                
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Mode of Instruction</h3>
+                <ul>
+                    <li>Online class setting</li>
+                    <li>One-on-one tutorials</li>
+                    <li>Pre-recorded videos</li>
+                    <li>AI Personal Tutor (Tuta)</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-gift"></i> Benefits</h3>
+                <ul>
+                    <li>Hands-on tutorials</li>
+                    <li>AI Tuta subscription for 3 months</li>
+                    <li>Certificate of completion</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Curriculum -->
+        <div class="curriculum">
+            <h2 class="text-center mb-4">Course Curriculum</h2>
+            
+            <div class="week-section">
+                <h3>Week 1: Introduction to Prompt Engineering & Language Models</h3>
+                <ul>
+                    <li>Fundamentals of Large Language Models (LLMs)</li>
+                    <li>Role of Prompts in AI</li>
+                    <li>Interactive Session with hands-on demonstrations</li>
+                </ul>
+            </div>
+        
+            <div class="week-section">
+                <h3>Week 2: Crafting Effective Prompts</h3>
+                <ul>
+                    <li>Foundational Principles</li>
+                    <li>Practical Techniques</li>
+                    <li>Workshop Activity</li>
+                </ul>
+            </div>
+        
+            <div class="week-section">
+                <h3>Week 3: Advanced Prompting Techniques</h3>
+                <ul>
+                    <li>Zero-shot, one-shot, and few-shot prompting</li>
+                    <li>Prompt Templates and Customization</li>
+                    <li>Hands-on Lab</li>
+                </ul>
+            </div>
+        
+            <div class="week-section">
+                <h3>Week 4: Evaluating & Optimizing Prompt Performance</h3>
+                <ul>
+                    <li>Evaluation Methods</li>
+                    <li>Iterative Optimization</li>
+                    <li>Interactive Exercise</li>
+                </ul>
+            </div>
+        
+            <div class="week-section">
+                <h3>Week 5: Domain-Specific Prompt Engineering</h3>
+                <ul>
+                    <li>Tailoring Prompts for Various Applications</li>
+                    <li>Practical Application</li>
+                    <li>Group Project Workshop</li>
+                </ul>
+            </div>
+        
+            <div class="week-section">
+                <h3>Week 6: Ethics & Final Projects</h3>
+                <ul>
+                    <li>Ethics & Responsible AI</li>
+                    <li>Future Trends</li>
+                    <li>Final Project Presentation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Enroll Section -->
+        <section class="enroll-section">
+            <h2>Ready to Master Prompt Engineering?</h2>
+            <p>Join our next cohort and transform your AI skills</p>
+            <a href="https://forms.gle/ESYeanYpp8HV5eFc8" class="enroll-btn">Enroll Now</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">BVM Digital</div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BVM Digital. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

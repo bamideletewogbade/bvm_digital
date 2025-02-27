@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
         :root {
+            --heading-font: 'Plus Jakarta Sans', sans-serif;
+            --body-font: 'Inter', sans-serif;
             --primary-color: #ED1C24;
             --secondary-color: #FECE12;
             --text-color: #2D3748;
             --light-bg: #F7FAFC;
             --white: #FFFFFF;
+            --black: #000000;
             --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
         }
 
@@ -21,7 +25,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            /* font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; */
         }
 
         body {
@@ -32,7 +36,7 @@
 
         /* Header & Navigation */
         header {
-            background: rgba(37, 25, 25, 0.95);
+            background: var(--black);
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -57,7 +61,7 @@
             gap: 3rem;
         }
 
-        .logo {
+        /* .logo {
             color: var(--white);
             font-size: 1.75rem;
             font-weight: 700;
@@ -65,7 +69,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
+        } */
 
         .logo i {
             color: var(--secondary-color);
@@ -119,9 +123,28 @@
             box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
         }
 
+        .mobile-contact-btn {
+        display: none;  /* Hidden by default */
+        background: var(--gradient);
+        color: #FFFFFF;
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        margin: 1rem 0;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+    }
+
+
        /* Hero Section Enhancements */
 .hero {
-    background: var(--gradient);
+    background: var(--black);
     padding: 8rem 0 5rem;
     position: relative;
     overflow: hidden;
@@ -207,7 +230,7 @@
     50% { transform: translateY(-20px); }
 }
 
-.cta-button {
+/* .cta-button {
     display: inline-block;
     background: var(--secondary-color);
     color: var(--text-color);
@@ -223,6 +246,27 @@
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(254, 206, 18, 0.4);
+} */
+
+.cta-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
 }
 
 /* Floating Shapes */
@@ -333,7 +377,7 @@
 
         .cta-button {
             display: inline-block;
-            background: var(--secondary-color);
+            background: var(--gradient);
             color: var(--text-color);
             padding: 1rem 2.5rem;
             border-radius: 50px;
@@ -353,8 +397,8 @@
             50% { transform: translateY(-20px); }
         }
 
-        /* Services Section */
-        .services {
+     
+        /* .services {
             padding: 4rem 0;
             background: var(--white);
         }
@@ -380,63 +424,263 @@
         }
 
         .service-card {
-            padding: 2.5rem;
-            border-radius: 15px;
-            background: var(--light-bg);
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    padding: 2.5rem;
+    border-radius: 15px;
+    background: var(--light-bg);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px; 
+}
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
 
-        .service-card:hover::before {
-            opacity: 0.1;
-        }
+.service-link {
+    margin-top: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+}
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(45, 55, 72, 0.1);
-        }
+.service-link:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+}
 
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
+.service-link i {
+    transition: transform 0.3s ease;
+}
 
+.service-link:hover i {
+    transform: translateX(5px);
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.service-card:hover::before {
+    opacity: 0.1;
+}
+
+
+.service-icon, .service-card h3, .service-card p {
+    position: relative;
+    z-index: 2;
+}
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             position: relative;
             z-index: 2;
-        }
+        } */
 
-        .service-card p {
+        /* .service-card p {
             color: #666;
             position: relative;
             z-index: 2;
-        }
+        } */
+
+         /* Enhanced Service Cards */
+.services-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.service-card {
+    padding: 3rem 2.5rem;
+    border-radius: 16px;
+    background: var(--light-bg);
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 0;
+    background: var(--gradient);
+    transition: height 0.4s ease;
+}
+
+.service-card:hover::before {
+    height: 100%;
+}
+
+.service-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: var(--black);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+    background: var(--gradient);
+    transform: translateY(-5px) rotate(5deg);
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    color: var(--white);
+}
+
+.service-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover h3 {
+    transform: translateX(10px);
+}
+
+.service-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+    font-size: 1.05rem;
+}
+
+.service-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.service-features span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.service-features i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.service-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    background: var(--primary-color);
+    align-self: flex-start;
+}
+
+.service-link:hover {
+    background: var(--black);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-link i {
+    transition: transform 0.3s ease;
+}
+
+.service-link:hover i {
+    transform: translateX(5px);
+}
+
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-card {
+        padding: 2rem;
+        min-height: auto;
+    }
+    
+    .service-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .service-card h3 {
+        font-size: 1.5rem;
+    }
+}
 
         .contact-container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 3rem 2rem;
-            background: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+            /* background: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%); */
+            background: var(--black);
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
@@ -486,7 +730,7 @@
         }
 
         footer {
-            background: #2D3748;
+            background: var(--black);
             color: white;
             padding: 2rem 0;
             text-align: center;
@@ -503,7 +747,7 @@
         .footer-logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #FECE12;
+            color: var(--secondary-color);
         }
 
         .footer-social {
@@ -522,10 +766,10 @@
         }
 
         .footer-bottom {
-            background: #1A202C;
+            background: var(--black);
             padding: 1rem;
             text-align: center;
-            color: #A0AEC0;
+            color: var(--white);
         }
 
         @media (max-width: 1024px) {
@@ -585,7 +829,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--primary-color);
+                background: var(--black);
                 padding: 1rem;
                 flex-direction: column;
                 align-items: center;
@@ -612,8 +856,15 @@
                 font-size: 1rem;
             }
 
+            .section-title {
+                text-align: center;
+                margin-bottom: 4rem;
+            }
+
             .section-title h2 {
                 font-size: 2rem;
+                color: var(--text-color);
+                margin-bottom: 1rem;
             }
         }
        
@@ -943,28 +1194,58 @@
         gap: 1rem;
     }
 }
-.logo img {
-    max-height: 50px;
-    width: auto;
-    -webkit-font-smoothing: antialiased;
-    image-rendering: -webkit-optimize-contrast;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-    
-}
 .logo {
-    padding: 0.5rem;
-    /* border: 0.1px solid transparent; */
-    border-image: var(--gradient) 1;
-    border-radius: 10px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.10rem;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 40px; /* Fixed height for better control */
+    width: auto;
     transition: all 0.3s ease;
 }
-.logo:hover img {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); /* Enhance shadow on hover */
+
+.logo-text {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    /* text-transform: uppercase; */
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .logo-text {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 35px;
+    }
+    .logo-text {
+        font-size: 1.1rem;
+    }
+
+    .mobile-contact-btn {
+            display: block;  /* Show in mobile menu */
+        }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        gap: 0.5rem;
+    }
+    .logo img {
+        height: 30px;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
 }
     </style>
 </head>
@@ -972,15 +1253,18 @@
     <header>
         <nav>
             <div class="nav-container">
-                <a href="#" class="logo">
-                    <b><img src="images/f.png" alt="BVM Digital"></b>
+                <a href="index.html" class="logo">
+                    <img src="images/f.png" alt="BVM Digital">
+                    <span class="logo-text">BVM Digital</span>
                 </a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About Us</a>
                     <a href="services.html">Services</a>
                     <a href="solutions.html">Our Solutions</a>
+                    <a href="our_works.html">Our Works</a>
                     <a href="bvm_academy.html">BVM Academy</a>
+                    <a href="contact.html" class="mobile-contact-btn">Contact Us</a>
                 </div>
             </div>
             <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
@@ -1027,7 +1311,7 @@
             </div>
             <div class="about-content">
                 <!-- <h2 style="font-size: 40px;">About Us</h2> -->
-                <h2>Pioneering Digital Growth for SMEs</h2>
+                <h2 style="margin-top: 100px;">Pioneering Digital Growth for SMEs</h2>
                 <p>We are a cutting-edge Digital Marketing Technology company dedicated to empowering Small and Medium-sized Enterprises. Through innovative solutions and strategic expertise, we help businesses build strong online presence and achieve sustainable growth.</p>
                 
                 <div class="stats-grid">
@@ -1053,49 +1337,64 @@
         </div>
     </div>
 </section>
-    <section class="services" id="services">
-        <div class="section-title">
-            <h2>Our Services</h2>
-            <p>Comprehensive digital solutions tailored for your business success</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="service-icon fas fa-chart-line"></i>
-                <h3>Digital Strategy</h3>
-                <p>Custom-crafted strategies that drive growth and maximize ROI through data-driven insights</p>
-            </div>
-            <div class="service-card">
-                <i class="service-icon fas fa-code"></i>
-                <h3>Web Development</h3>
-                <p>Stunning, responsive websites that convert visitors into loyal customers</p>
-            </div>
-            <div class="service-card">
-                <i class="service-icon fas fa-cogs"></i>
-                <h3>Tech Solutions</h3>
-                <p>Innovative custom software solutions designed to streamline your business operations</p>
-            </div>
-            <div class="service-card">
-                <i class="service-icon fas fa-hashtag"></i>
-                <h3>Social Media</h3>
-                <p>Strategic social media management that builds engagement and drives brand growth</p>
-            </div>
-            <div class="service-card">
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="section-title">
+        <h2 style="text-align: center; margin-top: 100px;">Our Services</h2>
+        <p style="text-align: center;">Comprehensive digital solutions tailored for your business success</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon-wrapper">
                 <i class="service-icon fas fa-robot"></i>
-                <h3>AI Solutions</h3>
-                <p>Smart automation and AI-powered tools to enhance your marketing efficiency</p>
             </div>
-            <div class="service-card">
-                <i class="service-icon fas fa-ad"></i>
-                <h3>Digital Advertising</h3>
-                <p>Targeted campaigns that deliver measurable results and exceptional ROI</p>
+            <h3>AI & Tech Solutions</h3>
+            <p>Innovative technology solutions powered by artificial intelligence to transform your business operations</p>
+            <div class="service-features">
+                <span><i class="fas fa-check-circle"></i> AI Chatbots</span>
+                <span><i class="fas fa-check-circle"></i> Custom AI Solutions</span>
+                <span><i class="fas fa-check-circle"></i> Bespoke Tech Solutions</span>
+                <span><i class="fas fa-check-circle"></i> AI Training</span>
             </div>
+            <a href="ai_solutions.html" class="service-link">Explore Solutions <i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
+        
+        <div class="service-card">
+            <div class="service-icon-wrapper">
+                <i class="service-icon fas fa-chart-line"></i>
+            </div>
+            <h3>Digital Marketing Services</h3>
+            <p>Strategic marketing solutions that drive engagement, visibility, and sustainable growth for your brand</p>
+            <div class="service-features">
+                <span><i class="fas fa-check-circle"></i> Digital Ads</span>
+                <span><i class="fas fa-check-circle"></i> SEO</span>
+                <span><i class="fas fa-check-circle"></i> Social Media</span>
+                <span><i class="fas fa-check-circle"></i> Training</span>
+            </div>
+            <a href="digital_marketing_service.html" class="service-link">Explore Services <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon-wrapper">
+                <i class="service-icon fas fa-code"></i>
+            </div>
+            <h3>Web Design & Development</h3>
+            <p>Beautiful, functional websites that convert visitors into customers and elevate your digital presence</p>
+            <div class="service-features">
+                <span><i class="fas fa-check-circle"></i> Corporate Websites</span>
+                <span><i class="fas fa-check-circle"></i> E-Commerce</span>
+                <span><i class="fas fa-check-circle"></i> Training</span>
+                <span><i class="fas fa-check-circle"></i> Maintenance</span>
+            </div>
+            <a href="web_dev_service.html" class="service-link">Explore Websites <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
 <!-- Testimonial Section -->
 <section class="testimonials" id="testimonials">
     <div class="section-title">
-        <h2>What Our Clients Say</h2>
-        <p>Hear from businesses that have transformed their digital presence with us</p>
+        <h2 style="text-align: center; margin-top: 100px;">What Our Clients Say</h2>
+        <p style="text-align: center;">Hear from businesses that have transformed their digital presence with us</p>
     </div>
     <div class="testimonials-container">
         <div class="testimonial-card">
@@ -1177,13 +1476,17 @@
         <div class="contact-details">
             <div class="contact-item">
                 <i class="fas fa-phone"></i>
-                <span>+233 123 456 789</span>
+                <span>+23350864348</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+233242101281</span>
             </div>
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
                 <span>contact@bvmdigital.com</span>
             </div>
-            <a href="#" class="contact-cta">Chat with Support</a>
+            <!-- <a href="#" class="contact-cta">Chat with Support</a> -->
         </div>
     </div>
 </section>

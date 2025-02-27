@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced AI Solutions at BVM Digital - Empowering businesses with custom chatbots, automation, and intelligent systems for growth and efficiency.">
+    <title>AI Solutions | BVM Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #ED1C24;
+            --secondary-color: #FECE12;
+            --text-color: #2D3748;
+            --light-bg: #F7FAFC;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation - Matches Services Page */
+        header {
+            background: var(--black);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--secondary-color);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lets-talk-btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .lets-talk-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Updated AI Hero Section */
+        .ai-hero {
+            background: var(--black);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .ai-hero h1 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Service Details Section - Matches Services Page Style */
+        .service-details {
+            max-width: 1400px;
+            margin: -4rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            color: var(--white);
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon i {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: #666;
+        }
+
+        .service-features-list i {
+            color: var(--secondary-color);
+        }
+
+        .learn-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(237, 28, 36, 0.2);
+        }
+
+        /* Implementation Process - Enhanced */
+        .process-section {
+            background: var(--light-bg);
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Tech Stack Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .tech-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .tech-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--black);
+            color: var(--white);
+            border-radius: 15px;
+            margin: 4rem 0;
+        }
+
+        /* Footer - Matches Services Page */
+        footer {
+            background: var(--black);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #FECE12;
+        }
+
+        .footer-bottom {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .lets-talk-btn {
+                display: none;
+            }
+
+            .ai-hero h1 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/f.png" alt="BVM Digital">
+                    <span class="logo-text">BVM Digital</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="solutions.html">Our Solutions</a>
+                    <a href="our_works.html">Our Works</a>
+                    <a href="bvm_academy.html">BVM Academy</a>
+                </div>
+            </div>
+            <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
+            <i class="menu-toggle fas fa-bars"></i>
+        </nav>
+    </header>
+
+    <!-- AI Hero Section -->
+    <section class="ai-hero">
+        <h1>AI & Tech Solutions</h1>
+        <p>Transform your business with intelligent automation and cutting-edge technology solutions</p>
+    </section>
+
+    <!-- Service Details -->
+    <div class="service-details">
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Chatbots</h3>
+                <ul class="service-features-list">
+                    <li><i class="fas fa-check"></i>24/7 Customer Support</li>
+                    <li><i class="fas fa-check"></i>Natural Language Processing</li>
+                    <li><i class="fas fa-check"></i>Multi-platform Integration</li>
+                    <li><i class="fas fa-check"></i>Sentiment Analysis</li>
+                </ul>
+                <!-- <a href="#" class="learn-more-btn">Explore Chatbots <i class="fas fa-arrow-right"></i></a> -->
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Custom AI Solutions</h3>
+                <ul class="service-features-list">
+                    <li><i class="fas fa-check"></i>Tailored Machine Learning Models</li>
+                    <li><i class="fas fa-check"></i>Predictive Analytics</li>
+                    <li><i class="fas fa-check"></i>Computer Vision Systems</li>
+                    <li><i class="fas fa-check"></i>Natural Language Processing</li>
+                </ul>
+                <!-- <a href="#" class="learn-more-btn">Build Custom AI <i class="fas fa-arrow-right"></i></a> -->
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Bespoke Tech Solutions</h3>
+                <ul class="service-features-list">
+                    <li><i class="fas fa-check"></i>Custom Software Development</li>
+                    <li><i class="fas fa-check"></i>API Integration</li>
+                    <li><i class="fas fa-check"></i>Cloud Solutions</li>
+                    <li><i class="fas fa-check"></i>IoT Integration</li>
+                </ul>
+                <!-- <a href="#" class="learn-more-btn">Tech Solutions <i class="fas fa-arrow-right"></i></a> -->
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>AI Training</h3>
+                <ul class="service-features-list">
+                    <li><i class="fas fa-check"></i>Team Training Programs</li>
+                    <li><i class="fas fa-check"></i>AI Strategy Workshops</li>
+                    <li><i class="fas fa-check"></i>Implementation Support</li>
+                    <li><i class="fas fa-check"></i>Ongoing Consultancy</li>
+                </ul>
+                <!-- <a href="#" class="learn-more-btn">Learn AI <i class="fas fa-arrow-right"></i></a> -->
+            </div>
+        </div>
+
+        <!-- Implementation Process -->
+        <section class="process-section">
+            <h2 class="text-center mb-5">Implementation Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <h4>Discovery & Planning</h4>
+                    <p>Understanding your business needs and AI opportunities</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <h4>Solution Design</h4>
+                    <p>Creating tailored AI architecture and workflows</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <h4>Development & Testing</h4>
+                    <p>Building and refining AI models with real-world data</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <h4>Deployment & Training</h4>
+                    <p>Implementation and knowledge transfer for your team</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section>
+            <h2 class="text-center mb-5">Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fab fa-python"></i>
+                    <h4>Python</h4>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-robot"></i>
+                    <h4>TensorFlow</h4>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>PyTorch</h4>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-cloud"></i>
+                    <h4>AWS/Azure</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Transform Your Business with AI?</h2>
+            <p>Let's build intelligent solutions that drive growth and efficiency</p>
+            <a href="contact.html" class="learn-more-btn">
+                Start AI Journey
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">BVM Digital</div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BVM Digital. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

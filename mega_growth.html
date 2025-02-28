@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BVM Digital - Mega Growth Social Media Portfolio">
+    <title>Mega Growth | BVM Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary-color: #ED1C24;
+            --secondary-color: #FECE12;
+            --text-color: #2D3748;
+            --light-bg: #F7FAFC;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gradient: linear-gradient(135deg, #ED1C24 0%, #FECE12 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--black);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .mobile-contact-btn {
+            display: none;
+            background: var(--gradient);
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.10rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        .logo-text {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lets-talk-btn {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .lets-talk-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(254, 206, 18, 0.3);
+        }
+
+        /* Project Detail Section */
+        .project-detail {
+            padding-top: 7rem;
+            background: var(--light-bg);
+        }
+
+        .breadcrumb-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .breadcrumbs {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumbs a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumbs a:hover {
+            color: var(--primary-color);
+        }
+
+        .breadcrumbs span {
+            color: var(--primary-color);
+        }
+
+        .project-header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .project-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 1rem;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .gallery-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .gallery-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--gradient);
+            border-radius: 4px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.1);
+        }
+
+        .gallery-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .gallery-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .gallery-stats {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .gallery-stat i {
+            color: var(--primary-color);
+        }
+
+        .related-projects {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .related-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .back-to-works {
+            display: block;
+            text-align: center;
+            margin: 3rem auto;
+            background: var(--gradient);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            max-width: 250px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-works:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FECE12;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #FECE12;
+        }
+
+        .footer-bottom {
+            background: var(--black);
+            padding: 1rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 1200;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--secondary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .project-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .mobile-contact-btn {
+                display: block;
+            }
+
+            .nav-container {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 1rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .lets-talk-btn {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                gap: 0.5rem;
+            }
+            .logo img {
+                height: 30px;
+            }
+            .logo-text {
+                font-size: 1rem;
+            }
+            .project-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stat-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/f.png" alt="BVM Digital">
+                    <span class="logo-text">BVM Digital</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="solutions.html">Our Solutions</a>
+                    <a href="our_works.html">Our Works</a>
+                    <a href="bvm_academy.html">BVM Academy</a>
+                    <a href="contact.html" class="mobile-contact-btn">Contact Us</a>
+                </div>
+            </div>
+            <a href="contact.html" class="lets-talk-btn">Let's Talk</a>
+            <i class="menu-toggle fas fa-bars"></i>
+        </nav>
+    </header>
+
+    <section class="project-detail">
+        <div class="breadcrumb-container">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> / 
+                <a href="our_works.html">Our Works</a> / 
+                <span>Mega Growth</span>
+            </div>
+        </div>
+
+        <div class="project-header">
+            <div class="project-subtitle">Social Media Management</div>
+            <h1 class="project-title" data-aos="fade-up">Mega Growth</h1>
+            <p class="project-description" data-aos="fade-up" data-aos-delay="100">
+                Mega Growth is a leading hair care brand specializing in products that promote healthy hair growth and maintenance. Our comprehensive social media management strategy helped them connect with their target audience, boost brand awareness, and drive engagement through compelling content and strategic influencer partnerships.
+            </p>
+            
+            <div class="project-stats" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-item">
+                    <div class="stat-number">150%</div>
+                    <div class="stat-label">Follower Growth</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Engagement Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">65%</div>
+                    <div class="stat-label">Brand Awareness</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">Influencer Partners</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-container">
+            <h2 class="gallery-title" data-aos="fade-right">Campaign Highlights</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up">
+                    <div class="gallery-image">
+                        <img src="images/mega_growth/Flaunt your confidence 2.jpg" alt="Confidence Campaign">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Confidence Campaign</h3>
+                        <p>A powerful campaign showcasing how Mega Growth products help customers feel confident by achieving healthy, vibrant hair they love.</p>
+                        <div class="gallery-stats">
+                            <div class="gallery-stat">
+                                <i class="fas fa-heart"></i>
+                                <span>4.2K Likes</span>
+                            </div>
+                            <div class="gallery-stat">
+                                <i class="fas fa-share"></i>
+                                <span>1.3K Shares</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="images/mega_growth/Mega Long hair bvm.jpg" alt="Transformation Stories">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Transformation Stories</h3>
+                        <p>Real-life customer testimonials and before/after transformations showcasing the effectiveness of Mega Growth products for various hair types.</p>
+                        <div class="gallery-stats">
+                            <div class="gallery-stat">
+                                <i class="fas fa-heart"></i>
+                                <span>3.7K Likes</span>
+                            </div>
+                            <div class="gallery-stat">
+                                <i class="fas fa-share"></i>
+                                <span>980 Shares</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="images/mega_growth/Hi October BVM.jpg" alt="Influencer Partnerships">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Influencer Partnerships</h3>
+                        <p>Strategic collaborations with hair care influencers to demonstrate product usage, benefits, and results through authentic content creation.</p>
+                        <div class="gallery-stats">
+                            <div class="gallery-stat">
+                                <i class="fas fa-heart"></i>
+                                <span>5.6K Likes</span>
+                            </div>
+                            <div class="gallery-stat">
+                                <i class="fas fa-share"></i>
+                                <span>2.1K Shares</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-image">
+                        <img src="images/mega_growth/hair_care_tips.jpg" alt="Hair Care Education">
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Hair Care Education</h3>
+                        <p>Educational content series providing valuable tips, tutorials, and information about proper hair care techniques and product application.</p>
+                        <div class="gallery-stats">
+                            <div class="gallery-stat">
+                                <i class="fas fa-heart"></i>
+                                <span>3.1K Likes</span>
+                            </div>
+                            <div class="gallery-stat">
+                                <i class="fas fa-share"></i>
+                                <span>1.8K Shares</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="gallery-container">
+            <h2 class="gallery-title" data-aos="fade-right">Our Approach</h2>
+            <p data-aos="fade-up">
+                For Mega Growth, we implemented a multi-faceted social media strategy centered on authenticity, education, and inspiration. Our comprehensive approach included:
+            </p>
+            <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                <li data-aos="fade-up" data-aos-delay="100">Developing a consistent visual identity that aligns with the brand's vibrant and empowering personality</li>
+                <li data-aos="fade-up" data-aos-delay="150">Creating engaging content formats including tutorials, before/after transformations, and user-generated content</li>
+                <li data-aos="fade-up" data-aos-delay="200">Implementing a strategic influencer marketing program with carefully selected partners</li>
+                <li data-aos="fade-up" data-aos-delay="250">Crafting educational content that positions Mega Growth as a trusted authority in hair care</li>
+                <li data-aos="fade-up" data-aos-delay="300">Building community through interactive campaigns, challenges, and responsive engagement</li>
+                <li data-aos="fade-up" data-aos-delay="350">Utilizing data-driven insights to optimize content strategy and posting schedules</li>
+            </ul>
+        </div>
+
+        <!-- <div class="related-projects">
+            <h2 class="related-title" data-aos="fade-up">Other Social Media Projects</h2>
+            <div class="related-grid">
+                <div class="portfolio-item" data-aos="fade-up">
+                    <div class="portfolio-image">
+                        <img src="images/ppl_pension_trust/secure the future 1200x1200.jpg" alt="People's Pension Trust">
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">Social Media Management</div>
+                        <h3 class="portfolio-title">People's Pension Trust</h3>
+                        <p class="portfolio-description">Strategic social media management that helped increase engagement and build trust with target demographics.</p>
+                        <a href="peoples_pension_trust.html" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="our_works.html" class="back-to-works" data-aos="fade-up">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a> -->
+    </section>
+
+    <!-- Modal for image preview -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">BVM Digital</div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BVM Digital. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Image Modal
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        // Get all gallery images
+        const galleryImages = document.querySelectorAll(".gallery-image img");
+        
+        galleryImages.forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
+        });
+
+        // Close modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close when clicking outside of modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
